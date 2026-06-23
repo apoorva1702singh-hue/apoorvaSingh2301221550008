@@ -1,90 +1,159 @@
+1. Palindrome Number(LeetCode-9)...
+
 class Solution {
     public boolean isPalindrome(int x) {
-        
-        if (x < 0 || (x % 10 == 0 && x != 0)) {
+
+        if(x<0){
             return false;
         }
 
-        int reversedHalf = 0;
-
-        while (x > reversedHalf) {
-            reversedHalf = reversedHalf * 10 + x % 10;
-            x /= 10;
+        if(x%10 == 0 && x != 0){
+            return false;
         }
 
+        int temp = x;
+        int rev = 0;
+        while(temp != 0)
+        {
+            int lastDigit = temp%10;
+            rev = rev * 10 + lastDigit;
+            temp = temp/10;
+        }
         
-        return x == reversedHalf || x == reversedHalf / 10;
+        if(rev == x){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 
-.......................................................................................
+---------------------------------------------------------------------------------------------------------------
+
+2. Palindrome String...
+
+import java.util.Scanner;
+public class PalindromeCheck {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String s = sc.nextLine();
+
+        s = s.toLowerCase();
+
+        int left = 0;
+        int right = s.length() - 1;
+
+        boolean isPalindrome = true;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                isPalindrome = false;
+                break;
+            }
+            left++;
+            right--;
+        }
+
+        if (isPalindrome) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a Palindrome");
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------
+
+3. Count minimum no. of steps...
 
 import java.util.*;
-
-public class Main {
+class Main {
     public static void main(String[] args) {
-        int A = 5;
-        int B = 17;
-
-        int distance = Math.abs(B - A);
-        int moves = (distance + 4) / 5; // ceil(distance / 5)
-
-        System.out.println(moves);
-    }
-}
-
-..........................................................................................
-
-class Solution {
-    public static void main(String [] args) {
-Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int number[] = new int[size];
-        for(int i=0; i<size; i++){
-            number[i] = sc.nextInt();
-        }
-        for(int i=0; i<size; i++){
-            System.out.println(number[i]);
-        }
-
-    }
-}
----------------------------------------------------------------------------------------------------------
-class Solution {
-    public static void main(String [] args) {
-       int sum = 0;
         Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int number[] = new int[size];
-        for(int i=0; i<size; i++){
-        number[i] = sc.nextInt();
+        
+        int a[] = {1,2,3,4,5};
+        int steps = 0;
+        int distance;
+        
+        System.out.println("Enter the distance to be covered");
+        distance =sc.nextInt();
+        
+        int rem = distance % 5;
+        if(rem != 0){
+            steps++;
         }
-        for(int i=0; i<size; i++){
-        sum+=number[i];
-        }
-        System.out.println(sum);
+        steps = steps + distance/5;
+        System.out.println(steps);
     }
 }
--------------------------------------------------------------------------------------------------------
 
-class Solution {
-    public static void main(String [] args) {
+---------------------------------------------------------------------------------------------------------------
+
+4. Find who will win A or B...
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n;
+        System.out.println("Enter a no.");
+        n = sc.nextInt();
+        
+        if(n%3 == 0){
+            System.out.println("B wins...");
+        }
+        else{
+            System.out.println("A wins...");
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------
+
+5. Input an array and print it...
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size;
+        System.out.println("Enter the size of the array");
+        size = sc.nextInt();
+        int arr[] = new int[size];
+        System.out.println("enter "+ size + " elements");
+        for(int i=0;i<size;i++)
+        {
+            arr[i] = sc.nextInt();
+        }
+        for(int i=0;i<size;i++)
+        {
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------
+
+6. Calculate sum and average of an array...
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size;
         int sum = 0;
-        int avg = 0;
-        Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int number[] = new int[size];
-        for(int i=0; i<size; i++){
-        number[i] = sc.nextInt();
+        System.out.println("Enter the size of the array");
+        size = sc.nextInt();
+        int arr[] = new int[size];
+        System.out.println("enter "+ size + " elements");
+        for(int i=0;i<size;i++)
+        {
+            arr[i] = sc.nextInt();
+            sum = sum + arr[i];
         }
-        for(int i=0; i<size; i++){
-        sum+=number[i];
-        avg = sum/size;
-        }
-        System.out.println(avg);
+       System.out.println("Sum is :" + sum);
+       System.out.println("Average is :" + sum/size);
     }
 }
-
-
-
-
